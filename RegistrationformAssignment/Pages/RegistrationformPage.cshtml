@@ -1,0 +1,103 @@
+﻿@page
+@model RegistrationformAssignment.Pages.RegistrationformPageModel
+@{
+    ViewData["Title"] = "Inschrijvingsformulier";
+}
+<h1>@ViewData["Title"] </h1>
+
+<form method="post">
+
+    <div class="form-check-inline mb-3">
+        <label class="form-check-inline">Geslacht:</label>
+        @foreach (var genders in Enum.GetValues(typeof(RegistrationformEnums.Gender)))
+        {
+            <div class="form-check form-check-inline">
+                <input class="form-check-input " type="radio" value="@genders" id="@genders.ToString()" asp-for="Registrationform.Gender" required />
+                <label class="form-check-label" for="@genders.ToString()">@genders.ToString()</label>
+            </div>
+        }
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="Registrationform.FirstName">Voornaam:</label>
+            <input type="text" asp-for="Registrationform.FirstName" class="form-control" placeholder="Voornaam" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Registrationform.LastName">Achternaam:</label>
+            <input type="text" asp-for="Registrationform.LastName" class="form-control" placeholder="Achternaam" required />
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Registrationform.Email">E-mailadres:</label>
+        <input type="email" asp-for="Registrationform.Email" class="form-control" placeholder="example@example.com" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Registrationform.PhoneNumber">Telefoonnummer:</label>
+        <input type="tel" asp-for="Registrationform.PhoneNumber" class="form-control" placeholder="0612345678" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Registrationform.Residence">Woonplaats:</label>
+        <input type="text" asp-for="Registrationform.Residence" class="form-control" required />
+    </div>
+
+    <div class="form-check-inline mb-3">
+        <label class="form-check-inline">Vakgebied:</label>
+        @foreach (var fields in Enum.GetValues(typeof(RegistrationformEnums.FieldOfExpertise)))
+        {
+            <div class="form-check form-check-inline">
+                <input class="form-check-input " type="radio" value="@fields" id="@fields.ToString()" asp-for="Registrationform.FieldOfExpertise" required />
+                <label class="form-check-label" for="@fields.ToString()">@fields.ToString()</label>
+            </div>
+        }
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Registrationform.Education">Opleiding:</label>
+        <input type="text" asp-for="Registrationform.Education" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Registrationform.WorkExperience">Werkervaring:</label>
+        <input type="text" asp-for="Registrationform.WorkExperience" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Registrationform.DesiredFunction">Gewenste functie:</label>
+        <input type="text" asp-for="Registrationform.DesiredFunction" class="form-control" required />
+    </div>
+
+    <div>
+        <div class="form-check-inline mb-3">
+            <label class="form-check-inline">Aanleiding:</label>
+            @{string[] reasonsArray = { "Werkzoekend", "Meer uitdaging", "Meer of minder werk", "Dichter bij huis", "Onbekend" }; }
+            @foreach (var reasons in Enum.GetValues(typeof(RegistrationformEnums.JobApplicationReason)))
+            {
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input " type="radio" value="@reasons" id="@reasons.ToString()" asp-for="Registrationform.JobApplicationReason" required />
+                    <label class="form-check-label" for="@reasons.ToString()">@reasonsArray[(int)reasons]</label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="form-check-inline mb-3">
+        <label class="form-check-inline">Locatie:</label>
+        @foreach (var locations in Enum.GetValues(typeof(RegistrationformEnums.DesiredLocation)))
+        {
+            <div class="form-check form-check-inline">
+                <input class="form-check-input " type="radio" value="@locations" id="@locations.ToString()" asp-for="Registrationform.DesiredLocation" required />
+                <label class="form-check-label" for="@locations.ToString()">@locations.ToString()</label>
+            </div>
+        }
+    </div>
+
+    <div class=" mb-3">
+        <label asp-for="Registrationform.FormComments">Opmerkingen:</label>
+        <textarea type="text" asp-for="Registrationform.FormComments" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Verstuur</button>
+</form>
+
