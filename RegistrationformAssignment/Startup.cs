@@ -26,8 +26,8 @@ namespace RegistrationformAssignment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddScoped<DataAccessImplementation>();
             services.AddMediatR(typeof(Startup).Assembly);
+            services.AddScoped<DataAccessImplementation>();
 
         }
 

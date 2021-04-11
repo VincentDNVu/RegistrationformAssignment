@@ -7,22 +7,25 @@ using System.Threading.Tasks;
 using RegistrationformAssignment.DataAccess;
 using RegistrationformAssignment.Queries;
 using RegistrationformAssignment.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace RegistrationformAssignment.Handlers
 {
     public class GetAllRegistrationformsHandler : IRequestHandler<GetAllRegistrationformsQuery, List<RegistrationformModel>>
     {
         private readonly DataAccessImplementation _cloudDataAccess;
-        public GetAllRegistrationformsHandler(DataAccessImplementation cloudDataAccess)
+        private readonly IConfiguration _configuration;
+
+        public GetAllRegistrationformsHandler(DataAccessImplementation cloudDataAccess, IConfiguration configuration)
         {
             _cloudDataAccess = cloudDataAccess;
+            _configuration = configuration;
         }
 
         public async Task<List<RegistrationformModel>> Handle(GetAllRegistrationformsQuery request, CancellationToken cancellationToken)
         {
-            string connectionString = "Server=127.0.0.1;Port=5432;database=testdemo;user id=postgres;password=admin123";
-            string sql = @"SELECT * FROM registrationform2";
-            var obj = await Task.FromResult(_cloudDataAccess.LoadData<RegistrationformModel, dynamic>(sql, new { }, connectionString));
+            string sql = @"SELECT * FROM registrationform";
+            var obj = await Task.FromResult(_cloudDataAccess.LoadData<RegistrationformModel, dynamic>(sql, new { }, _configuration.GetConnectionString("google")));
             return obj.Result.ToList();
         }
     }
