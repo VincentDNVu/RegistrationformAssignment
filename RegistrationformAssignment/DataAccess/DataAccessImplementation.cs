@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 using Dapper;
 using Npgsql;
 using Dommel;
+using RegistrationformAssignment.Models;
 
-namespace RegistrationformAssignment.DataAccess
+namespace RegistrationformAssignment.DataAccess 
 {
     public class DataAccessImplementation : IDataAccess
     {
@@ -30,5 +31,22 @@ namespace RegistrationformAssignment.DataAccess
                 return parameters;
             }
         }
+        //public async Task<T> SaveData<T>(string sql, T parameters, string connectionString)
+        //{
+        //    using (IDbConnection connection = new NpgsqlConnection(connectionString))
+        //    {
+        //        return await connection.InsertAsync<RegistrationformModel>(parameters);
+        //        //return parameters;
+        //    }
+        //}
+      /*  public async Task<int> SaveDataDommel(RegistrationformModel registrationform, string connectionString)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(connectionString))
+            {
+                var obj = await connection.InsertAsync(registrationform);
+                return registrationform.Id;
+            }
+        }*/
+
     }
 }

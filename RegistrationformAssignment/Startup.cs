@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using MediatR;
 using RegistrationformAssignment.DataAccess;
 
+
 namespace RegistrationformAssignment
 {
     public class Startup
@@ -27,8 +28,8 @@ namespace RegistrationformAssignment
         {
             services.AddRazorPages();
             services.AddMediatR(typeof(Startup).Assembly);
-            services.AddScoped<DataAccessImplementation>();
-
+            services.AddScoped<IDataAccess, DataAccessImplementation>();
+            //services.AddScoped<DataAccessImplementation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
