@@ -9,7 +9,7 @@
 
     <div class="form-check-inline mb-3">
         <label class="form-check-inline">Geslacht:</label>
-        @foreach (var genders in Enum.GetValues(typeof(RegistrationformEnums.Gender)))
+        @foreach (var genders in Enum.GetValues(typeof(RegistrationformAssignment.RegistrationformEnums.Gender)))
         {
             <div class="form-check form-check-inline">
                 <input class="form-check-input " type="radio" value="@genders" id="@genders.ToString()" asp-for="Registrationform.Gender" required />
@@ -46,7 +46,7 @@
 
     <div class="form-check-inline mb-3">
         <label class="form-check-inline">Vakgebied:</label>
-        @foreach (var fields in Enum.GetValues(typeof(RegistrationformEnums.FieldOfExpertise)))
+        @foreach (var fields in Enum.GetValues(typeof(RegistrationformAssignment.RegistrationformEnums.FieldOfExpertise)))
         {
             <div class="form-check form-check-inline">
                 <input class="form-check-input " type="radio" value="@fields" id="@fields.ToString()" asp-for="Registrationform.FieldOfExpertise" required />
@@ -72,7 +72,7 @@
         <div class="form-check-inline mb-3">
             <label class="form-check-inline">Aanleiding:</label>
             @{string[] reasonsArray = { "Werkzoekend", "Meer uitdaging", "Meer of minder werk", "Dichter bij huis", "Onbekend" }; }
-            @foreach (var reasons in Enum.GetValues(typeof(RegistrationformEnums.JobApplicationReason)))
+            @foreach (var reasons in Enum.GetValues(typeof(RegistrationformAssignment.RegistrationformEnums.JobApplicationReason)))
             {
                 <div class="form-check form-check-inline">
                     <input class="form-check-input " type="radio" value="@reasons" id="@("_"+@reasons.ToString())" asp-for="Registrationform.JobApplicationReason" required />
@@ -84,7 +84,7 @@
 
     <div class="form-check-inline mb-3">
         <label class="form-check-inline">Locatie:</label>
-        @foreach (var locations in Enum.GetValues(typeof(RegistrationformEnums.DesiredLocation)))
+        @foreach (var locations in Enum.GetValues(typeof(RegistrationformAssignment.RegistrationformEnums.DesiredLocation)))
         {
             <div class="form-check form-check-inline">
                 <input class="form-check-input " type="radio" value="@locations" id="@locations.ToString()" asp-for="Registrationform.DesiredLocation" required />

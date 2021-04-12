@@ -26,10 +26,9 @@ namespace RegistrationformAssignment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorPagesOptions(options => { options.Conventions.AddPageRoute("/Home/Index", ""); } );
             services.AddMediatR(typeof(Startup).Assembly);
             services.AddScoped<IDataAccess, DataAccessImplementation>();
-            //services.AddScoped<DataAccessImplementation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +40,7 @@ namespace RegistrationformAssignment
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Errors/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }

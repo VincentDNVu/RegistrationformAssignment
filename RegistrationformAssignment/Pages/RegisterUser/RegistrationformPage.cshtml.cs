@@ -43,7 +43,7 @@ namespace RegistrationformAssignment.Pages
                   _logger.LogInformation($"Registrationform OnPost prop: {prop} value: {prop?.GetValue(Registrationform, null)?.ToString()}");
               }
             await _mediator.Send(new AddRegistrationformCommand(Registrationform));
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Home/Index");
         }
     }
 }
