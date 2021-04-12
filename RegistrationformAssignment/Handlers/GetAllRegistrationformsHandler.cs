@@ -29,14 +29,6 @@ namespace RegistrationformAssignment.Handlers
             _logger = logger;
         }
 
-        /* public async Task<List<RegistrationformModel>> Handle(GetAllRegistrationformsQuery request, CancellationToken cancellationToken)
-         {
-             string sql = @"SELECT * FROM registrationform";
-             var obj = await Task.FromResult(_cloudDataAccess.LoadData<RegistrationformModel, dynamic>(sql, new { }, _configuration.GetConnectionString("google")));
-             _logger.LogInformation($"Retrieving {obj.Result.Count} entries from the database");
-             return obj.Result.ToList();
-         }*/
-
         //  DOMMEL IMPLEMENTATION
         public async Task<List<RegistrationformModel>> Handle(GetAllRegistrationformsQuery request, CancellationToken cancellationToken)
         {
@@ -49,6 +41,14 @@ namespace RegistrationformAssignment.Handlers
             _logger.LogInformation($"Retrieving {newList.Count} entries from the database");
             return newList;
         }
-
     }
 }
+/* GENERIC IMPLEMENTATION BEFORE DOMMEL
+        public async Task<List<RegistrationformModel>> Handle(GetAllRegistrationformsQuery request, CancellationToken cancellationToken)
+        {
+            string sql = @"SELECT * FROM registrationform";
+            var obj = await Task.FromResult(_cloudDataAccess.LoadData<RegistrationformModel, dynamic>(sql, new { }, _configuration.GetConnectionString("google")));
+            _logger.LogInformation($"Retrieving {obj.Result.Count} entries from the database");
+            return obj.Result.ToList();
+        }
+*/

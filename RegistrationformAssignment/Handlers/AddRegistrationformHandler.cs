@@ -37,3 +37,20 @@ namespace RegistrationformAssignment.Handlers
         }
     }
 }
+
+/* GENERIC IMPLEMENTATION BEFORE DOMMEL
+   public async Task<RegistrationformModel> Handle(AddRegistrationformCommand request, CancellationToken cancellationToken)
+        {
+            //Look for an alternative way with a mapper
+            string sql = @"INSERT INTO registrationform (Gender, FirstName, LastName, 
+                                Email, PhoneNumber, Residence, FieldOfExpertise, Education, 
+                                WorkExperience, DesiredFunction, 
+                                JobApplicationReason, DesiredLocation, FormComments) VALUES (@Gender, @FirstName,
+                                @LastName, @Email, @PhoneNumber, @Residence, @FieldOfExpertise, @Education,
+                                @WorkExperience, @DesiredFunction, @JobApplicationReason, @DesiredLocation, @FormComments)";
+            await Task.FromResult(_cloudDataAccess.SaveData(sql, request.model, _configuration.GetConnectionString("google")));
+            _logger.LogInformation($"Handling registrationform entry {request.model.FirstName} {request.model.LastName} to the database");
+            return request.model;
+        }
+    }
+ */
