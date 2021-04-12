@@ -18,13 +18,13 @@ namespace RegistrationformAssignment.Handlers
 {
     public class GetAllRegistrationformsHandler : IRequestHandler<GetAllRegistrationformsQuery, List<RegistrationformModel>>
     {
-        private readonly IDataAccess _cloudDataAccess;
+       // private readonly IDataAccess _cloudDataAccess;
         private readonly IConfiguration _configuration;
         private readonly ILogger<GetAllRegistrationformsHandler> _logger;
 
-        public GetAllRegistrationformsHandler(IDataAccess cloudDataAccess, IConfiguration configuration, ILogger<GetAllRegistrationformsHandler> logger)
+        public GetAllRegistrationformsHandler(IConfiguration configuration, ILogger<GetAllRegistrationformsHandler> logger /*,IDataAccess cloudDataAccess,*/)
         {
-            _cloudDataAccess = cloudDataAccess;
+          //  _cloudDataAccess = cloudDataAccess;
             _configuration = configuration;
             _logger = logger;
         }
